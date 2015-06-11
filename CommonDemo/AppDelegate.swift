@@ -29,33 +29,41 @@ extension NSURL {
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
     let callbackURL = "https://dl.dropboxusercontent.com/u/33491043/sites/wlite/success.html"
+    
+    
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        println("Hola mundo bitch!")
         
         let consumerKey = "**"
         let consumerSecret = "**"
         
-        let oauthswift = OAuth2Swift(consumerKey: consumerKey,
-            consumerSecret: consumerSecret,
-            authorizeUrl: "https://www.wunderlist.com/oauth/authorize",
-            accessTokenUrl: "https://www.wunderlist.com/oauth/access_token",
-            responseType: "token")
-        oauthswift.authorizeWithCallbackURL( NSURL(string: callbackURL)!,
-            scope: "user,repo",
-            state: "",
-            success: {
-                credential, response, parameters in
-                println("success: \(credential) ; \(response) ; \(parameters)")
-            },
-            failure: {
-                (error:NSError!) -> Void in
-                println(error.localizedDescription)
-        })
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        if let token = userDefaults.stringForKey("access_token") {
+            println("token: " + token)
+        } else {
+            
+            let oauthswift = OAuth2Swift(consumerKey: consumerKey,
+                consumerSecret: consumerSecret,
+                authorizeUrl: "https://www.wunderlist.com/oauth/authorize",
+                accessTokenUrl: "https://www.wunderlist.com/oauth/access_token",
+                responseType: "token")
+            oauthswift.authorizeWithCallbackURL( NSURL(string: callbackURL)!,
+                scope: "user,repo",
+                state: "",
+                success: {
+                    credential, response, parameters in
+                    println("success: \(credential) ; \(response) ; \(parameters)")
+                },
+                failure: {
+                    (error:NSError!) -> Void in
+                    println(error.localizedDescription)
+            })
+        }
+        
+        
         
         return true
     }
@@ -95,14 +103,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let range = href.rangeOfString("#access_token="){
                 let token = href.substringFromIndex(range.endIndex)
                 println("token: " + token)
+                NSUserDefaults.standardUserDefaults().setValue(token, forKey: "access_token")
             }
         }
-        
-        
-//        let actualURL = NSURL(string: value!)
-//        let accessTokenItem = actualURL!.queryItemForKey("access_token")
-//        let accessToken = accessTokenItem!.value
-//        println("accessToken: " + accessToken!)
         
         return true
     }
