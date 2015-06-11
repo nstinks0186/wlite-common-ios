@@ -18,6 +18,8 @@
 		D91DDE631B29152E0050A57C /* CommonDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91DDE621B29152E0050A57C /* CommonDemoTests.swift */; };
 		D91DDE6A1B2915750050A57C /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D91DDE261B2910D90050A57C /* Common.framework */; };
 		D91DDE6B1B2915810050A57C /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D91DDE421B29140A0050A57C /* OAuthSwift.framework */; };
+		D91DDE6E1B2A089B0050A57C /* CRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91DDE6D1B2A089B0050A57C /* CRequest.swift */; };
+		D91DDE721B2A09590050A57C /* CRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91DDE711B2A09590050A57C /* CRequestTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		D91DDE5C1B29152E0050A57C /* CommonDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D91DDE611B29152E0050A57C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D91DDE621B29152E0050A57C /* CommonDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonDemoTests.swift; sourceTree = "<group>"; };
+		D91DDE6D1B2A089B0050A57C /* CRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRequest.swift; sourceTree = "<group>"; };
+		D91DDE711B2A09590050A57C /* CRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRequestTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				D91DDE2B1B2910D90050A57C /* Common.h */,
+				D91DDE6D1B2A089B0050A57C /* CRequest.swift */,
 				D91DDE291B2910D90050A57C /* Supporting Files */,
 			);
 			path = Common;
@@ -136,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				D91DDE381B2910D90050A57C /* CommonTests.swift */,
+				D91DDE711B2A09590050A57C /* CRequestTests.swift */,
 				D91DDE361B2910D90050A57C /* Supporting Files */,
 			);
 			path = CommonTests;
@@ -374,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D91DDE6E1B2A089B0050A57C /* CRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D91DDE391B2910D90050A57C /* CommonTests.swift in Sources */,
+				D91DDE721B2A09590050A57C /* CRequestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,6 +537,7 @@
 		D91DDE3D1B2910D90050A57C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -542,12 +551,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		D91DDE3E1B2910D90050A57C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
