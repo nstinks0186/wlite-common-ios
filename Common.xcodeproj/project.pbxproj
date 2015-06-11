@@ -26,6 +26,7 @@
 		D91DDE7C1B2A1C280050A57C /* CUserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91DDE7B1B2A1C280050A57C /* CUserRouter.swift */; };
 		D91DDE7E1B2A1E4C0050A57C /* CUserRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91DDE7D1B2A1E4C0050A57C /* CUserRouterTests.swift */; };
 		D91DDE7F1B2A1F4E0050A57C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D91DDE731B2A18B30050A57C /* Alamofire.framework */; };
+		D91DDE821B2A27770050A57C /* CFolderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91DDE811B2A27770050A57C /* CFolderRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		D91DDE791B2A1BA90050A57C /* CConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CConstants.swift; sourceTree = "<group>"; };
 		D91DDE7B1B2A1C280050A57C /* CUserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CUserRouter.swift; sourceTree = "<group>"; };
 		D91DDE7D1B2A1E4C0050A57C /* CUserRouterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CUserRouterTests.swift; sourceTree = "<group>"; };
+		D91DDE811B2A27770050A57C /* CFolderRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFolderRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 			children = (
 				D91DDE2B1B2910D90050A57C /* Common.h */,
 				D91DDE7B1B2A1C280050A57C /* CUserRouter.swift */,
+				D91DDE811B2A27770050A57C /* CFolderRouter.swift */,
 				D91DDE6D1B2A089B0050A57C /* CRequest.swift */,
 				D91DDE791B2A1BA90050A57C /* CConstants.swift */,
 				D91DDE291B2910D90050A57C /* Supporting Files */,
@@ -430,6 +433,7 @@
 			files = (
 				D91DDE6E1B2A089B0050A57C /* CRequest.swift in Sources */,
 				D91DDE7A1B2A1BA90050A57C /* CConstants.swift in Sources */,
+				D91DDE821B2A27770050A57C /* CFolderRouter.swift in Sources */,
 				D91DDE7C1B2A1C280050A57C /* CUserRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,6 +8,8 @@
 
 import UIKit
 import OAuthSwift
+import Alamofire
+import Common
 
 extension NSURL {
     var allQueryItems: [NSURLQueryItem] {
@@ -30,19 +32,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let callbackURL = "https://dl.dropboxusercontent.com/u/33491043/sites/wlite/success.html"
-    
-    
-
+    let consumerKey = "**"
+    let consumerSecret = "**"
+    let userID = "**"
+    let folderList = ["**"]
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        
-        let consumerKey = "**"
-        let consumerSecret = "**"
-        
         let userDefaults = NSUserDefaults.standardUserDefaults()
         if let token = userDefaults.stringForKey("access_token") {
-            println("token: " + token)
+           
+            setupAuth(token)
+            
+//            readUser()
+//            readFolders()
+//            readFolderRevisions()
+            readFolder(folderList[0])
+            
         } else {
             
             let oauthswift = OAuth2Swift(consumerKey: consumerKey,
@@ -102,14 +108,63 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             println("url: " + href)
             if let range = href.rangeOfString("#access_token="){
                 let token = href.substringFromIndex(range.endIndex)
-                println("token: " + token)
                 NSUserDefaults.standardUserDefaults().setValue(token, forKey: "access_token")
+                
+                setupAuth(token)
             }
         }
         
         return true
     }
+    
+    // MARK: Convenience methods
 
-
+    func setupAuth(token: String){
+        println("token: " + token)
+        
+        var manager = Manager.sharedInstance
+        manager.session.configuration.HTTPAdditionalHeaders = [
+            "X-Client-ID":"71436ba1a9dc81c908f1",
+            "X-Access-Token":token
+        ]
+    }
+    
+    func readUser(){
+        Alamofire
+            .request(CUserRouter.ReadUser())
+            .responseJSON { (request, response, JSON, let error) in
+                println("error: \(error)")
+                println("result: \(JSON!)")
+        }
+    }
+    
+    func readFolders(){
+        Alamofire
+            .request(CFolderRouter.ReadFolders())
+            .responseJSON { (request, response, JSON, let error) in
+                println("error: \(error)")
+                println("result: \(JSON!)")
+        }
+    }
+    
+    func readFolderRevisions(){
+        Alamofire
+            .request(CFolderRouter.ReadFolderRevisions())
+            .responseJSON { (request, response, JSON, let error) in
+                println("error: \(error)")
+                println("result: \(JSON!)")
+        }
+    }
+    
+    func readFolder(folderid: String) {
+        Alamofire
+            .request(CFolderRouter.ReadFolder(folderid))
+            .responseJSON { (request, response, JSON, let error) in
+                println("error: \(error)")
+                println("result: \(JSON!)")
+        }
+    }
+    
+    
 }
 
