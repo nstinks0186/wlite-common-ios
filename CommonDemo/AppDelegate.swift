@@ -7,69 +7,33 @@
 //
 
 import UIKit
-import OAuthSwift
 import Alamofire
 import Common
-
-extension NSURL {
-    var allQueryItems: [NSURLQueryItem] {
-        get {
-            let components = NSURLComponents(URL: self, resolvingAgainstBaseURL: false)!
-            let allQueryItems = components.queryItems!
-            return allQueryItems as! [NSURLQueryItem]
-        }
-    }
-    
-    func queryItemForKey(key: String) -> NSURLQueryItem? {
-        
-        let predicate = NSPredicate(format: "name=%@", key)
-        return (allQueryItems as NSArray).filteredArrayUsingPredicate(predicate).first as? NSURLQueryItem
-    }
-}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    // this is the callback url that is registered in wunderlist
+    // that callback url should redirect to <app url scheme>://wlite?access_token=<the token>
     let callbackURL = "https://dl.dropboxusercontent.com/u/33491043/sites/wlite/success.html"
-    let consumerKey = "**"
-    let consumerSecret = "**"
-    let userID = "**"
-    let folderList = ["**"]
+    
+    let clientID = "**"
+    let clientSecret = "**"
+
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        if let token = userDefaults.stringForKey("access_token") {
-           
-            setupAuth(token)
+        Wlite.setupClientID(clientID, clientSecret: clientSecret)
+        Wlite.authorizeWithCallbackURL(callbackURL, successHandler: { (token) -> Void in
+            println("authorization successful: \(token)")
             
-//            readUser()
-//            readFolders()
-//            readFolderRevisions()
-//            readFolder(folderList[0])
+            self.readUser()
             
-        } else {
-            
-            let oauthswift = OAuth2Swift(consumerKey: consumerKey,
-                consumerSecret: consumerSecret,
-                authorizeUrl: "https://www.wunderlist.com/oauth/authorize",
-                accessTokenUrl: "https://www.wunderlist.com/oauth/access_token",
-                responseType: "token")
-            oauthswift.authorizeWithCallbackURL( NSURL(string: callbackURL)!,
-                scope: "user,repo",
-                state: "",
-                success: {
-                    credential, response, parameters in
-                    println("success: \(credential) ; \(response) ; \(parameters)")
-                },
-                failure: {
-                    (error:NSError!) -> Void in
-                    println(error.localizedDescription)
-            })
-        }
-        
-        
+        }) { (error) -> Void in
+            println("authorization failed: \(error)")
+        };
         
         return true
     }
@@ -97,37 +61,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        if (url.host == "oauth-callback") {
-            if (url.path!.hasPrefix("/wunderlite")){
-                OAuth2Swift.handleOpenURL(url)
-            }
-        }
-        
-        let queryItem = url.queryItemForKey("href")
-        if let href = queryItem!.value{
-            println("url: " + href)
-            if let range = href.rangeOfString("#access_token="){
-                let token = href.substringFromIndex(range.endIndex)
-                NSUserDefaults.standardUserDefaults().setValue(token, forKey: "access_token")
-                
-                setupAuth(token)
-            }
-        }
-        
+        Wlite.handleOpenURL(url);
         return true
     }
     
     // MARK: Convenience methods
-
-    func setupAuth(token: String){
-        println("token: " + token)
-        
-        var manager = Manager.sharedInstance
-        manager.session.configuration.HTTPAdditionalHeaders = [
-            "X-Client-ID":"71436ba1a9dc81c908f1",
-            "X-Access-Token":token
-        ]
-    }
     
     func readUser(){
         Alamofire
