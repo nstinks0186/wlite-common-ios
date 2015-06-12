@@ -29,6 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Wlite.authorizeWithCallbackURL(callbackURL, successHandler: { (token) -> Void in
             println("authorization successful: \(token)")
             
+            Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = [
+                "X-Client-ID": self.clientID,
+                "X-Access-Token":token
+            ]
+            
             self.readUser()
             
         }) { (error) -> Void in

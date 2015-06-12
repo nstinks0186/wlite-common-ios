@@ -8,7 +8,6 @@
 
 import Foundation
 import OAuthSwift
-import Alamofire
 
 extension NSURL {
     var allQueryItems: [NSURLQueryItem] {
@@ -47,10 +46,10 @@ public class Wlite {
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
         if let token = userDefaults.stringForKey("com.wlite.oauth.accessToken") {
-            Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = [
-                "X-Client-ID": consumerKey,
-                "X-Access-Token":token
-            ]
+//            Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = [
+//                "X-Client-ID": consumerKey,
+//                "X-Access-Token":token
+//            ]
             
             successHandler(token: token)
         }
@@ -82,10 +81,10 @@ public class Wlite {
             if let token = queryItem!.value{
                 let userDefaults = NSUserDefaults.standardUserDefaults()
                 userDefaults.setObject(token, forKey: "com.wlite.oauth.accessToken")
-                Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = [
-                    "X-Client-ID": consumerKey,
-                    "X-Access-Token":token
-                ]
+//                Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = [
+//                    "X-Client-ID": consumerKey,
+//                    "X-Access-Token":token
+//                ]
                 
                 if let handler = successHandler {
                     handler(token: token)
