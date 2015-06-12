@@ -18,8 +18,6 @@
 		D91DDE631B29152E0050A57C /* CommonDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91DDE621B29152E0050A57C /* CommonDemoTests.swift */; };
 		D91DDE6A1B2915750050A57C /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D91DDE261B2910D90050A57C /* Common.framework */; };
 		D91DDE6B1B2915810050A57C /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D91DDE421B29140A0050A57C /* OAuthSwift.framework */; };
-		D91DDE6E1B2A089B0050A57C /* CRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91DDE6D1B2A089B0050A57C /* CRequest.swift */; };
-		D91DDE721B2A09590050A57C /* CRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91DDE711B2A09590050A57C /* CRequestTests.swift */; };
 		D91DDE741B2A18B30050A57C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D91DDE731B2A18B30050A57C /* Alamofire.framework */; };
 		D91DDE771B2A1AA50050A57C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D91DDE731B2A18B30050A57C /* Alamofire.framework */; };
 		D91DDE7A1B2A1BA90050A57C /* CConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91DDE791B2A1BA90050A57C /* CConstants.swift */; };
@@ -64,8 +62,6 @@
 		D91DDE5C1B29152E0050A57C /* CommonDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D91DDE611B29152E0050A57C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D91DDE621B29152E0050A57C /* CommonDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonDemoTests.swift; sourceTree = "<group>"; };
-		D91DDE6D1B2A089B0050A57C /* CRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRequest.swift; sourceTree = "<group>"; };
-		D91DDE711B2A09590050A57C /* CRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRequestTests.swift; sourceTree = "<group>"; };
 		D91DDE731B2A18B30050A57C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D91DDE791B2A1BA90050A57C /* CConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CConstants.swift; sourceTree = "<group>"; };
 		D91DDE7B1B2A1C280050A57C /* CUserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CUserRouter.swift; sourceTree = "<group>"; };
@@ -141,7 +137,6 @@
 				D91DDE2B1B2910D90050A57C /* Common.h */,
 				D91DDE7B1B2A1C280050A57C /* CUserRouter.swift */,
 				D91DDE811B2A27770050A57C /* CFolderRouter.swift */,
-				D91DDE6D1B2A089B0050A57C /* CRequest.swift */,
 				D91DDE791B2A1BA90050A57C /* CConstants.swift */,
 				D91DDE291B2910D90050A57C /* Supporting Files */,
 			);
@@ -160,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				D91DDE381B2910D90050A57C /* CommonTests.swift */,
-				D91DDE711B2A09590050A57C /* CRequestTests.swift */,
 				D91DDE7D1B2A1E4C0050A57C /* CUserRouterTests.swift */,
 				D91DDE361B2910D90050A57C /* Supporting Files */,
 			);
@@ -431,7 +425,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D91DDE6E1B2A089B0050A57C /* CRequest.swift in Sources */,
 				D91DDE7A1B2A1BA90050A57C /* CConstants.swift in Sources */,
 				D91DDE821B2A27770050A57C /* CFolderRouter.swift in Sources */,
 				D91DDE7C1B2A1C280050A57C /* CUserRouter.swift in Sources */,
@@ -443,7 +436,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D91DDE391B2910D90050A57C /* CommonTests.swift in Sources */,
-				D91DDE721B2A09590050A57C /* CRequestTests.swift in Sources */,
 				D91DDE7E1B2A1E4C0050A57C /* CUserRouterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
