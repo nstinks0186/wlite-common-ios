@@ -21,6 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let clientID = "**"
     let clientSecret = "**"
+    
+    let completionHandler = {(request: NSURLRequest, response: NSHTTPURLResponse?, JSON: AnyObject?, error: NSError?) -> Void in
+        if (error != nil) {
+            println("error: \(error)")
+            println("response: \(response)")
+        }
+        if (JSON != nil) {
+            println("result: \(JSON!)")
+        }
+    }
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -34,7 +44,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 "X-Access-Token":token
             ]
             
-            self.readUser()
+//            self.readUser()
+//            self.readFolders()
+//            self.readFolderRevisions()
+//            self.readFolder("946735")
+//            self.readLists()
+//            self.readList("86173208")
+            self.readTasks("86173208")
             
         }) { (error) -> Void in
             println("authorization failed: \(error)")
@@ -70,44 +86,72 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    // MARK: Convenience methods
+    // MARK: User
     
     func readUser(){
         Alamofire
             .request(CUserRouter.ReadUser())
-            .responseJSON { (request, response, JSON, let error) in
-                println("error: \(error)")
-                println("result: \(JSON!)")
-        }
+            .responseJSON(options: nil, completionHandler: completionHandler)
     }
+    
+    func readUsers() {
+        // TODO: this
+    }
+    
+    // MARK: Folder
     
     func readFolders(){
         Alamofire
             .request(CFolderRouter.ReadFolders())
-            .responseJSON { (request, response, JSON, let error) in
-                println("error: \(error)")
-                println("result: \(JSON!)")
-        }
+            .responseJSON(options: nil, completionHandler: completionHandler)
     }
     
     func readFolderRevisions(){
         Alamofire
             .request(CFolderRouter.ReadFolderRevisions())
-            .responseJSON { (request, response, JSON, let error) in
-                println("error: \(error)")
-                println("result: \(JSON!)")
-        }
+            .responseJSON(options: nil, completionHandler: completionHandler)
+    }
+    
+    func createFolder() {
+        // TODO: this
     }
     
     func readFolder(folderid: String) {
         Alamofire
             .request(CFolderRouter.ReadFolder(folderid))
-            .responseJSON { (request, response, JSON, let error) in
-                println("error: \(error)")
-                println("result: \(JSON!)")
-        }
+            .responseJSON(options: nil, completionHandler: completionHandler)
     }
     
+    func updateFolder() {
+        // TODO: this
+    }
+    
+    func deleteFolder() {
+        // TODO: this
+    }
+    
+    // MARK: List
+    
+    func readLists() {
+        Alamofire
+            .request(CListRouter.ReadLists())
+            .responseJSON(options: nil, completionHandler: completionHandler)
+    }
+    
+    func readList(listid: String) {
+        Alamofire
+            .request(CListRouter.ReadList(listid))
+            .responseJSON(options: nil, completionHandler: completionHandler)
+    }
+    
+    // MARK: Task
+    
+    func readTasks(listid: String) {
+        // TODO: this
+//        Alamofire
+//            .request(CTaskRouter.ReadTasks())
+//            .responseJSON(options: nil, completionHandler: completionHandler)
+    }
     
 }
 

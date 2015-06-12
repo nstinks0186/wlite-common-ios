@@ -35,11 +35,11 @@ public enum CListRouter: URLRequestConvertible {
         case .ReadLists():
             return "/lists"
         case .ReadList(let listid):
-            return "/list/\(listid)"
+            return "/lists/\(listid)"
         case .UpdateList(let listid):
-            return "/list/\(listid)"
+            return "/lists/\(listid)"
         case .DeleteList(let listid):
-            return "/list/\(listid)"
+            return "/lists/\(listid)"
         }
     }
     
