@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            readUser()
 //            readFolders()
 //            readFolderRevisions()
-            readFolder(folderList[0])
+//            readFolder(folderList[0])
             
         } else {
             

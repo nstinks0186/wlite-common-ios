@@ -1,5 +1,5 @@
 //
-//  CFolderRouter.swift
+//  CTaskRouter.swift
 //  Common
 //
 //  Created by Pinuno Fuentes on 6/11/15.
@@ -9,42 +9,37 @@
 import Foundation
 import Alamofire
 
-public enum CFolderRouter: URLRequestConvertible {
+public enum CTaskRouter: URLRequestConvertible {
     static var OAuthToken: String?
     
-    case ReadFolders()
-    case ReadFolderRevisions()
-    case ReadFolder(String)
-    case UpdateFolder(String)
-    case DeleteFolder(String)
+    case ReadTasks()
+    case ReadTask(String)
+    case UpdateTask(String)
+    case DeleteTask(String)
     
     var method: Alamofire.Method {
         switch self {
-        case .ReadFolders:
+        case .ReadTasks:
             return .GET
-        case .ReadFolderRevisions:
+        case .ReadTask:
             return .GET
-        case .ReadFolder:
-            return .GET
-        case .UpdateFolder:
+        case .UpdateTask:
             return .PATCH
-        case .DeleteFolder:
+        case .DeleteTask:
             return .DELETE
         }
     }
-
+    
     var path: String {
         switch self {
-        case .ReadFolders():
-            return "/folders"
-        case .ReadFolderRevisions():
-            return "/folder_revisions"
-        case .ReadFolder(let folderid):
-            return "/folders/\(folderid)"
-        case .UpdateFolder(let folderid):
-            return "/folders/\(folderid)"
-        case .DeleteFolder(let folderid):
-            return "/folders/\(folderid)"
+        case .ReadTasks():
+            return "/tasks"
+        case .ReadTask(let taskid):
+            return "/tasks/\(taskid)"
+        case .UpdateTask(let taskid):
+            return "/tasks/\(taskid)"
+        case .DeleteTask(let taskid):
+            return "/tasks/\(taskid)"
         }
     }
     
@@ -55,7 +50,7 @@ public enum CFolderRouter: URLRequestConvertible {
         let mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(path))
         mutableURLRequest.HTTPMethod = method.rawValue
         
-        if let token = CFolderRouter.OAuthToken {
+        if let token = CTaskRouter.OAuthToken {
             mutableURLRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
         
