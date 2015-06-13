@@ -1,3 +1,3 @@
 # wlite-common-ios
 
-IOS OAuth client for Wunderlist.
+Wunderlist OAuth library for iOS.
