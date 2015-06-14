@@ -1,4 +1,4 @@
-wlite-common-ios
+Wlite
 ===========
 
 Wunderlist OAuth library for iOS.
