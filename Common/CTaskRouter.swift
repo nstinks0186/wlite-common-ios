@@ -13,6 +13,7 @@ public enum CTaskRouter: URLRequestConvertible {
     static var OAuthToken: String?
     
     case ReadTasks()
+    case CreateTask([String: AnyObject])
     case ReadTask(String)
     case UpdateTask(String)
     case DeleteTask(String)
@@ -21,6 +22,8 @@ public enum CTaskRouter: URLRequestConvertible {
         switch self {
         case .ReadTasks:
             return .GET
+        case .CreateTask:
+            return .POST
         case .ReadTask:
             return .GET
         case .UpdateTask:
@@ -33,6 +36,8 @@ public enum CTaskRouter: URLRequestConvertible {
     var path: String {
         switch self {
         case .ReadTasks():
+            return "/tasks"
+        case .CreateTask:
             return "/tasks"
         case .ReadTask(let taskid):
             return "/tasks/\(taskid)"
@@ -55,6 +60,8 @@ public enum CTaskRouter: URLRequestConvertible {
         }
         
         switch self {
+        case .CreateTask(let parameters):
+            return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
         default:
             return mutableURLRequest
         }

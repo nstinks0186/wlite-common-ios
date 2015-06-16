@@ -50,7 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            self.readFolder("946735")
 //            self.readLists()
 //            self.readList("86173208")
-            self.readTasks("86173208")
+//            self.createTask("Test task, hola mundo!", forList: 164291775);
+//            self.readTasks("86173208")
             
         }) { (error) -> Void in
             println("authorization failed: \(error)")
@@ -138,10 +139,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .responseJSON(options: nil, completionHandler: completionHandler)
     }
     
+    func createList(){
+        // TODO: this
+    }
+    
     func readList(listid: String) {
         Alamofire
             .request(CListRouter.ReadList(listid))
             .responseJSON(options: nil, completionHandler: completionHandler)
+    }
+    
+    func updateList(){
+        // TODO: this
+    }
+    
+    func deleteList(){
+        // TODO: this
     }
     
     // MARK: Task
@@ -151,6 +164,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        Alamofire
 //            .request(CTaskRouter.ReadTasks())
 //            .responseJSON(options: nil, completionHandler: completionHandler)
+    }
+    
+    func createTask(title: String, forList listid:Int){
+        let parameters : [ String : AnyObject] = [
+            "title": title,
+            "list_id": listid
+        ]
+        Alamofire
+            .request(CTaskRouter.CreateTask(parameters))
+            .responseJSON(options: nil, completionHandler: completionHandler)
+        // TODO: this
+    }
+    
+    func readTask(){
+        // TODO: this
+    }
+    
+    func updateTask(){
+        // TODO: this
+    }
+    
+    func deleteTask(){
+        // TODO: this
     }
     
 }
