@@ -49,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            self.readFolderRevisions()
 //            self.readFolder("946735")
 //            self.readLists()
+//            self.createList("Bucket")
 //            self.readList("86173208")
 //            self.createTask("Test task, hola mundo!", forList: 164291775);
 //            self.readTasks("86173208")
@@ -139,8 +140,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .responseJSON(options: nil, completionHandler: completionHandler)
     }
     
-    func createList(){
-        // TODO: this
+    func createList(title: String){
+        let parameters : [ String : AnyObject] = [
+            "title": title
+        ]
+        Alamofire
+            .request(CListRouter.CreateList(parameters))
+            .responseJSON(options: nil, completionHandler: completionHandler)
     }
     
     func readList(listid: String) {
@@ -174,7 +180,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Alamofire
             .request(CTaskRouter.CreateTask(parameters))
             .responseJSON(options: nil, completionHandler: completionHandler)
-        // TODO: this
     }
     
     func readTask(){

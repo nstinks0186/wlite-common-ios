@@ -13,6 +13,7 @@ public enum CListRouter: URLRequestConvertible {
     static var OAuthToken: String?
     
     case ReadLists()
+    case CreateList([String: AnyObject])
     case ReadList(String)
     case UpdateList(String)
     case DeleteList(String)
@@ -21,6 +22,8 @@ public enum CListRouter: URLRequestConvertible {
         switch self {
         case .ReadLists:
             return .GET
+        case .CreateList:
+            return .POST
         case .ReadList:
             return .GET
         case .UpdateList:
@@ -33,6 +36,8 @@ public enum CListRouter: URLRequestConvertible {
     var path: String {
         switch self {
         case .ReadLists():
+            return "/lists"
+        case .CreateList:
             return "/lists"
         case .ReadList(let listid):
             return "/lists/\(listid)"
@@ -55,6 +60,8 @@ public enum CListRouter: URLRequestConvertible {
         }
         
         switch self {
+        case .CreateList(let parameters):
+            return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
         default:
             return mutableURLRequest
         }
