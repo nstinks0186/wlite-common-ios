@@ -46,10 +46,6 @@ public class Wlite {
         consumerSecret = secret;
     }
     
-    public class func isAuthenticated() -> Bool {
-        return Wlite.accessToken != nil
-    }
-    
     public class func authorizeWithCallbackURL(callbackURL:String, successHandler: WliteAuthorizeSuccessHandler, failureHandler: WliteAuthorizeFailureHandler){
         Wlite.successHandler = successHandler
         Wlite.failureHandler = failureHandler

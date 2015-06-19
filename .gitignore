@@ -1,2 +1,4 @@
 Cartfile.resolved
 Carthage/
+
+*.xcuserstate

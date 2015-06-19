@@ -28,6 +28,10 @@
 		D91DDE841B2A59DA0050A57C /* CListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91DDE831B2A59DA0050A57C /* CListRouter.swift */; };
 		D91DDE861B2A59E50050A57C /* CTaskRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91DDE851B2A59E50050A57C /* CTaskRouter.swift */; };
 		D91DDE891B2A64100050A57C /* Wlite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91DDE881B2A64100050A57C /* Wlite.swift */; };
+		D91DDECB1B34B9F00050A57C /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91DDECA1B34B9F00050A57C /* UserVC.swift */; };
+		D91DDECD1B34BA070050A57C /* FolderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91DDECC1B34BA070050A57C /* FolderVC.swift */; };
+		D91DDECF1B34BA1F0050A57C /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91DDECE1B34BA1F0050A57C /* ListVC.swift */; };
+		D91DDED11B34BA3B0050A57C /* TaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91DDED01B34BA3B0050A57C /* TaskVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +77,10 @@
 		D91DDE831B2A59DA0050A57C /* CListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CListRouter.swift; sourceTree = "<group>"; };
 		D91DDE851B2A59E50050A57C /* CTaskRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTaskRouter.swift; sourceTree = "<group>"; };
 		D91DDE881B2A64100050A57C /* Wlite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wlite.swift; sourceTree = "<group>"; };
+		D91DDECA1B34B9F00050A57C /* UserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVC.swift; sourceTree = "<group>"; };
+		D91DDECC1B34BA070050A57C /* FolderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderVC.swift; sourceTree = "<group>"; };
+		D91DDECE1B34BA1F0050A57C /* ListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
+		D91DDED01B34BA3B0050A57C /* TaskVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +188,10 @@
 			children = (
 				D91DDE4C1B29152E0050A57C /* AppDelegate.swift */,
 				D91DDE4E1B29152E0050A57C /* ViewController.swift */,
+				D91DDECA1B34B9F00050A57C /* UserVC.swift */,
+				D91DDECC1B34BA070050A57C /* FolderVC.swift */,
+				D91DDECE1B34BA1F0050A57C /* ListVC.swift */,
+				D91DDED01B34BA3B0050A57C /* TaskVC.swift */,
 				D91DDE501B29152E0050A57C /* Main.storyboard */,
 				D91DDE531B29152E0050A57C /* Images.xcassets */,
 				D91DDE551B29152E0050A57C /* LaunchScreen.xib */,
@@ -464,8 +476,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D91DDECF1B34BA1F0050A57C /* ListVC.swift in Sources */,
 				D91DDE4F1B29152E0050A57C /* ViewController.swift in Sources */,
+				D91DDECD1B34BA070050A57C /* FolderVC.swift in Sources */,
+				D91DDED11B34BA3B0050A57C /* TaskVC.swift in Sources */,
 				D91DDE4D1B29152E0050A57C /* AppDelegate.swift in Sources */,
+				D91DDECB1B34B9F00050A57C /* UserVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
