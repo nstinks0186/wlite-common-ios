@@ -10,17 +10,21 @@ import UIKit
 import Alamofire
 import Common
 
+struct App {
+    static let clientID = "71436ba1a9dc81c908f1"
+    static let clientSecret = "0974ff4a3fbd2403522a7608c5a227e2e06f8925cdab58fd7a34f8199dc8"
+    // this is the callback url that is registered in wunderlist
+    // that callback url should redirect to <app url scheme>://wlite?access_token=<the token>
+    static let callbackURL = "https://dl.dropboxusercontent.com/u/33491043/sites/wlite/success.html"
+    static var accessToken : String?
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    // this is the callback url that is registered in wunderlist
-    // that callback url should redirect to <app url scheme>://wlite?access_token=<the token>
-    let callbackURL = "https://dl.dropboxusercontent.com/u/33491043/sites/wlite/success.html"
     
-    let clientID = "**"
-    let clientSecret = "**"
     
     let completionHandler = {(request: NSURLRequest, response: NSHTTPURLResponse?, JSON: AnyObject?, error: NSError?) -> Void in
         if (error != nil) {
@@ -35,7 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        Wlite.setupClientID(clientID, clientSecret: clientSecret)
+        Wlite.setupClientID(App.clientID, clientSecret: App.clientSecret)
+        
+        /*
         if (!Wlite.isAuthenticated()) {
             Wlite.authorizeWithCallbackURL(callbackURL, successHandler: { (token) -> Void in
                 println("authorization successful: \(token)")
@@ -45,20 +51,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     "X-Access-Token":token
                 ]
                 
-                //            self.readUser()
-                //            self.readFolders()
-                //            self.readFolderRevisions()
-                //            self.readFolder("946735")
-                //            self.readLists()
-                //            self.createList("Bucket")
-                //            self.readList("86173208")
-                //            self.createTask("Test task, hola mundo!", forList: 164291775);
-                //            self.readTasks("86173208")
+//                            self.readUser()
+//                            self.readFolders()
+//                            self.readFolderRevisions()
+//                            self.readFolder("946735")
+//                            self.readLists()
+//                            self.createList("Bucket")
+//                            self.readList("86173208")
+//                            self.createTask("Test task, hola mundo!", forList: 164291775);
+//                            self.readTasks("86173208")
                 
                 }) { (error) -> Void in
                     println("authorization failed: \(error)")
             };
         }
+        */
         
         return true
     }

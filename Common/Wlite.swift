@@ -35,14 +35,19 @@ public class Wlite {
     static var successHandler : WliteAuthorizeSuccessHandler?;
     static var failureHandler : WliteAuthorizeFailureHandler?;
     
+    public static var accessToken : String? {
+        get {
+            return NSUserDefaults.standardUserDefaults().stringForKey("com.wlite.oauth.accessToken")
+        }
+    }
+    
     public class func setupClientID(id: String, clientSecret secret: String) {
         consumerKey = id;
         consumerSecret = secret;
     }
     
     public class func isAuthenticated() -> Bool {
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        return userDefaults.stringForKey("com.wlite.oauth.accessToken") != nil
+        return Wlite.accessToken != nil
     }
     
     public class func authorizeWithCallbackURL(callbackURL:String, successHandler: WliteAuthorizeSuccessHandler, failureHandler: WliteAuthorizeFailureHandler){

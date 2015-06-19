@@ -7,19 +7,44 @@
 //
 
 import UIKit
+import Common
+import Alamofire
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        func doPostAuth(token: String) {
+            println("access token: " + token)
+            App.accessToken = token
+            Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = [
+                "X-Client-ID": App.clientID,
+                "X-Access-Token":App.accessToken!
+            ]
+        }
+        
+        if let token = Wlite.accessToken {
+            doPostAuth(token)
+        }else {
+            Wlite.authorizeWithCallbackURL(App.callbackURL, successHandler: { (token) -> Void in
+                doPostAuth(token)
+                }, failureHandler: { (error) -> Void in
+                    println("authorization failed: \(error)")
+            })
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
 }
 
