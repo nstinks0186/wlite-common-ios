@@ -1,5 +1,5 @@
 //
-//  TableViewController.swift
+//  FolderVC.swift
 //  Common
 //
 //  Created by Pinuno Fuentes on 6/19/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewController: UITableViewController {
+class FolderVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
