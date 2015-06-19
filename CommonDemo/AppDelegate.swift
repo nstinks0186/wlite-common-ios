@@ -11,11 +11,11 @@ import Alamofire
 import Common
 
 struct App {
-    static let clientID = "71436ba1a9dc81c908f1"
-    static let clientSecret = "0974ff4a3fbd2403522a7608c5a227e2e06f8925cdab58fd7a34f8199dc8"
+    static let clientID = "**"
+    static let clientSecret = "**"
     // this is the callback url that is registered in wunderlist
     // that callback url should redirect to <app url scheme>://wlite?access_token=<the token>
-    static let callbackURL = "https://dl.dropboxusercontent.com/u/33491043/sites/wlite/success.html"
+    static let callbackURL = "**"
     static var accessToken : String?
 }
 
