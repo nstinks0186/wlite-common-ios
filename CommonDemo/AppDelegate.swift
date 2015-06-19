@@ -36,27 +36,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         Wlite.setupClientID(clientID, clientSecret: clientSecret)
-        Wlite.authorizeWithCallbackURL(callbackURL, successHandler: { (token) -> Void in
-            println("authorization successful: \(token)")
-            
-            Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = [
-                "X-Client-ID": self.clientID,
-                "X-Access-Token":token
-            ]
-            
-//            self.readUser()
-//            self.readFolders()
-//            self.readFolderRevisions()
-//            self.readFolder("946735")
-//            self.readLists()
-//            self.createList("Bucket")
-//            self.readList("86173208")
-//            self.createTask("Test task, hola mundo!", forList: 164291775);
-//            self.readTasks("86173208")
-            
-        }) { (error) -> Void in
-            println("authorization failed: \(error)")
-        };
+        if (!Wlite.isAuthenticated()) {
+            Wlite.authorizeWithCallbackURL(callbackURL, successHandler: { (token) -> Void in
+                println("authorization successful: \(token)")
+                
+                Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = [
+                    "X-Client-ID": self.clientID,
+                    "X-Access-Token":token
+                ]
+                
+                //            self.readUser()
+                //            self.readFolders()
+                //            self.readFolderRevisions()
+                //            self.readFolder("946735")
+                //            self.readLists()
+                //            self.createList("Bucket")
+                //            self.readList("86173208")
+                //            self.createTask("Test task, hola mundo!", forList: 164291775);
+                //            self.readTasks("86173208")
+                
+                }) { (error) -> Void in
+                    println("authorization failed: \(error)")
+            };
+        }
         
         return true
     }

@@ -40,6 +40,11 @@ public class Wlite {
         consumerSecret = secret;
     }
     
+    public class func isAuthenticated() -> Bool {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        return userDefaults.stringForKey("com.wlite.oauth.accessToken") != nil
+    }
+    
     public class func authorizeWithCallbackURL(callbackURL:String, successHandler: WliteAuthorizeSuccessHandler, failureHandler: WliteAuthorizeFailureHandler){
         Wlite.successHandler = successHandler
         Wlite.failureHandler = failureHandler
